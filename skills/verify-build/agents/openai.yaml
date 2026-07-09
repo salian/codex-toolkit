@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Build"
+  short_description: "Audit prompt-pack build completeness"
+  default_prompt: "Use $verify-build to audit whether the prompt pack was fully built."

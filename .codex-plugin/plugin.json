@@ -1,0 +1,34 @@
+{
+  "name": "codex-toolkit",
+  "version": "0.1.0",
+  "description": "Codex-native prompt-pack build, verification, coverage, and review workflows.",
+  "skills": "./skills/",
+  "author": {
+    "name": "Pranab Salian",
+    "email": "pranab@salian.in"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skills",
+    "prompt-packs",
+    "verification",
+    "code-review",
+    "workflow"
+  ],
+  "interface": {
+    "displayName": "Codex Toolkit",
+    "shortDescription": "Prompt-pack build and verification workflows for Codex.",
+    "longDescription": "Codex Toolkit provides Codex-native skills for generating prompt packs from specs, building prompt packs, verifying build completeness, checking wiring and coverage, and reviewing changes.",
+    "developerName": "Pranab Salian",
+    "category": "Productivity",
+    "capabilities": [
+      "Generate executable prompt packs from specs",
+      "Build prompt packs with tests and commits",
+      "Verify build completeness, wiring, and coverage",
+      "Review local changes for correctness and security",
+      "Orchestrate prompt-pack build and verification runs"
+    ],
+    "defaultPrompt": "Use $create-prompt-packs to convert the project specs into executable prompt packs."
+  }
+}

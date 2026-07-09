@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Wiring"
+  short_description: "Audit end-to-end integration wiring"
+  default_prompt: "Use $verify-wiring to audit whether built features are reachable end to end."

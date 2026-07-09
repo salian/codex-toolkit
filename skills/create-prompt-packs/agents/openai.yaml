@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Prompt Packs"
+  short_description: "Generate executable prompt packs from specs"
+  default_prompt: "Use $create-prompt-packs to convert the project specs into executable prompt packs."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Prompt Pack"
+  short_description: "Build one prompt pack with tests and commits"
+  default_prompt: "Use $build-prompt-pack to implement the selected prompt pack."

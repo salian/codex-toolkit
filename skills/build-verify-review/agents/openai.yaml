@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Verify Review"
+  short_description: "Run the prompt-pack build and verification pipeline"
+  default_prompt: "Use $build-verify-review to build and verify prompt packs through the full pipeline."

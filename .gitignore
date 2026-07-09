@@ -1,0 +1,12 @@
+.DS_Store
+
+# Local editor and tool state
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Codex local runtime/state
+.codex/logs/
+.codex/tmp/
+

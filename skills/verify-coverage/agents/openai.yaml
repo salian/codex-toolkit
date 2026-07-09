@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Coverage"
+  short_description: "Audit spec-to-pack ownership coverage"
+  default_prompt: "Use $verify-coverage to find spec capabilities with no owning prompt pack."
