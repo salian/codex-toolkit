@@ -11,3 +11,7 @@
 - Add a stdlib-only repository validator for plugin, marketplace, skill, symlink, and custom-agent metadata.
 - Normalize initial result trailers and clarify local custom-agent packaging boundaries.
 - Add plugin-bundled subagent prompt references matching the local coverage, wiring, and review custom agents.
+
+### Removed
+
+- Remove temporary Codex portability evaluation artifact after completing the baseline port decision.

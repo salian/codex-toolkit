@@ -9,7 +9,6 @@ This repository is a Codex plugin that ports the Claude prompt-pack pipeline int
 - `.agents/plugins/marketplace.json` - repo marketplace entry for installing this plugin locally.
 - `skills/<name>/SKILL.md` - Codex agent skills.
 - `skills/<name>/references/` - detailed workflow references loaded only when needed.
-- `CODEX_PORTABILITY_EVALUATION.md` - migration rationale and mapping from Claude to Codex.
 
 ## Authoring Rules
 
