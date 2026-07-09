@@ -7,6 +7,7 @@ Codex-native skills for a prompt-pack build pipeline:
 3. Verify build completeness, integration wiring, and spec-to-pack coverage.
 4. Review local changes for correctness, security, and missing tests.
 5. Optionally orchestrate build -> verify -> review with resumable state.
+6. Create focused git commits with detailed message bodies.
 
 This repository is a port of the process refined in `claude-toolkit`, but it is not a direct file copy. Codex uses skills, `AGENTS.md`, plugins, hooks, and subagents rather than Claude Code command files.
 
@@ -28,6 +29,16 @@ This repo also includes a repo marketplace at `.agents/plugins/marketplace.json`
 
 From this repo, Codex should show the `Codex Toolkit Local` marketplace in the plugin directory after restart. Install `codex-toolkit` from that marketplace to test plugin packaging.
 
+The plugin bundles a Codex PreToolUse hook in `hooks/hooks.json`. After installing or updating the plugin, review and trust the hook in Codex when prompted. The hook blocks common bodyless `git commit` commands and allows detailed commit messages that include `What changed`, `Why`, `Verification`, and `Notes/Risks`.
+
+For git-native enforcement outside Codex, run:
+
+```bash
+python3 scripts/install_git_commit_policy.py
+```
+
+That optional installer configures a global `commit-msg` hook and commit template for the current user. It is intentionally opt-in; installing the plugin does not rewrite global git settings.
+
 ## Skills
 
 | Skill | Purpose |
@@ -39,6 +50,7 @@ From this repo, Codex should show the `Codex Toolkit Local` marketplace in the p
 | `$verify-coverage` | Audit whether every spec capability has an owning pack or named deferred home. |
 | `$review-changes` | Review local changes for serious correctness, security, and test coverage issues. |
 | `$build-verify-review` | Orchestrate the full pack pipeline with resumable state. |
+| `$smart-commit` | Stage focused changes and create a detailed git commit. |
 
 ## Layout
 
@@ -56,6 +68,12 @@ From this repo, Codex should show the `Codex Toolkit Local` marketplace in the p
     change-reviewer.toml
 .codex-plugin/
   plugin.json
+hooks/
+  hooks.json
+  pre_tool_use_commit_policy.py
+scripts/
+  install_git_commit_policy.py
+  validate.py
 skills/
   create-prompt-packs/
   build-prompt-pack/
@@ -64,6 +82,7 @@ skills/
   verify-coverage/
   review-changes/
   build-verify-review/
+  smart-commit/
 ```
 
 ## Custom Agents

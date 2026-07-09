@@ -5,8 +5,9 @@
 .vscode/
 *.swp
 *.swo
+__pycache__/
+*.pyc
 
 # Codex local runtime/state
 .codex/logs/
 .codex/tmp/
-

@@ -16,6 +16,7 @@ SKILL_FRONTMATTER_RE = re.compile(r"^---\n(?P<body>.*?)\n---\n", re.DOTALL)
 def main() -> int:
     errors: list[str] = []
     validate_plugin(errors)
+    validate_hooks(errors)
     validate_marketplace(errors)
     validate_skills(errors)
     validate_repo_skill_links(errors)
@@ -48,6 +49,40 @@ def validate_plugin(errors: list[str]) -> None:
     for key in ("displayName", "shortDescription", "longDescription", "developerName", "category", "capabilities", "defaultPrompt"):
         if key not in interface:
             errors.append(f"{path}: interface missing `{key}`")
+
+
+def validate_hooks(errors: list[str]) -> None:
+    path = ROOT / "hooks" / "hooks.json"
+    if not path.exists():
+        return
+    payload = load_json(path, errors)
+    if payload is None:
+        return
+    hooks = payload.get("hooks")
+    if not isinstance(hooks, dict):
+        errors.append(f"{path}: missing `hooks` object")
+        return
+    for event_name, matchers in hooks.items():
+        if not isinstance(matchers, list):
+            errors.append(f"{path}: hooks.{event_name} must be an array")
+            continue
+        for matcher_index, matcher in enumerate(matchers):
+            if not isinstance(matcher, dict):
+                errors.append(f"{path}: hooks.{event_name}[{matcher_index}] must be an object")
+                continue
+            handlers = matcher.get("hooks")
+            if not isinstance(handlers, list) or not handlers:
+                errors.append(f"{path}: hooks.{event_name}[{matcher_index}].hooks must be a non-empty array")
+                continue
+            for handler_index, handler in enumerate(handlers):
+                if not isinstance(handler, dict):
+                    errors.append(f"{path}: hook handler must be an object")
+                    continue
+                command = handler.get("command")
+                if handler.get("type") != "command":
+                    errors.append(f"{path}: hook handler {handler_index} must use type=command")
+                if not isinstance(command, str) or not command.strip():
+                    errors.append(f"{path}: hook handler {handler_index} missing command")
 
 
 def validate_marketplace(errors: list[str]) -> None:
@@ -165,4 +200,3 @@ def load_json(path: Path, errors: list[str]) -> dict | None:
 
 if __name__ == "__main__":
     sys.exit(main())
-

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Smart Commit"
+  short_description: "Create focused commits with detailed message bodies"
+  default_prompt: "Use $smart-commit to commit the current changes with a detailed message body."

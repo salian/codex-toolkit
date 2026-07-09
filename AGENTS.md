@@ -7,6 +7,9 @@ This repository is a Codex plugin that ports the Claude prompt-pack pipeline int
 - `.codex-plugin/plugin.json` - Codex plugin manifest.
 - `.agents/skills/<name>` - repo-local development symlinks to `skills/<name>`.
 - `.agents/plugins/marketplace.json` - repo marketplace entry for installing this plugin locally.
+- `hooks/hooks.json` - plugin-bundled Codex hooks.
+- `hooks/*.py` - hook scripts invoked by the plugin hook config.
+- `scripts/` - repo validation and optional local setup helpers.
 - `skills/<name>/SKILL.md` - Codex agent skills.
 - `skills/<name>/references/` - detailed workflow references loaded only when needed.
 
@@ -19,6 +22,7 @@ This repository is a Codex plugin that ports the Claude prompt-pack pipeline int
 - Use `AGENTS.md` terminology for Codex project guidance. Do not introduce `CLAUDE.md` in Codex-side generated artifacts except when discussing migration from Claude.
 - Keep runtime state under `.codex/prompt-pipeline/` and durable project artifacts under `docs/`.
 - End verifier skills with the stable result trailer documented in the skill body.
+- Plugin install should not silently change global git settings. Put opt-in setup in scripts and document it.
 
 ## Validation
 

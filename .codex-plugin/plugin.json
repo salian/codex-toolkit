@@ -14,12 +14,13 @@
     "prompt-packs",
     "verification",
     "code-review",
+    "commit",
     "workflow"
   ],
   "interface": {
     "displayName": "Codex Toolkit",
-    "shortDescription": "Prompt-pack build and verification workflows for Codex.",
-    "longDescription": "Codex Toolkit provides Codex-native skills for generating prompt packs from specs, building prompt packs, verifying build completeness, checking wiring and coverage, and reviewing changes.",
+    "shortDescription": "Prompt-pack, verification, review, and commit workflows for Codex.",
+    "longDescription": "Codex Toolkit provides Codex-native skills for generating prompt packs from specs, building prompt packs, verifying build completeness, checking wiring and coverage, reviewing changes, and creating detailed git commits.",
     "developerName": "Pranab Salian",
     "category": "Productivity",
     "capabilities": [
@@ -27,8 +28,9 @@
       "Build prompt packs with tests and commits",
       "Verify build completeness, wiring, and coverage",
       "Review local changes for correctness and security",
-      "Orchestrate prompt-pack build and verification runs"
+      "Orchestrate prompt-pack build and verification runs",
+      "Create focused git commits with detailed message bodies"
     ],
-    "defaultPrompt": "Use $create-prompt-packs to convert the project specs into executable prompt packs."
+    "defaultPrompt": "Use $create-prompt-packs to convert the project specs into executable prompt packs, or $smart-commit to commit completed work with a detailed message."
   }
 }
